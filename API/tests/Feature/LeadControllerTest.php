@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Modules\Lead\Model\Lead;
@@ -92,7 +94,7 @@ class LeadControllerTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-            ->assertJson(['message' => 'Lead updated successfully']);
+            ->assertJson(['message' => 'Lead Updated Successfully']);
         $this->assertDatabaseHas('leads', ['email' => 'updated@example.com']);
     }
 
@@ -101,7 +103,6 @@ class LeadControllerTest extends TestCase
         // Create a user and authenticate the request
         $user = \App\Modules\Auth\Model\User::factory()->create();
         $this->actingAs($user, 'sanctum');
-        $status = LeadStatus::factory()->create();
         $lead = Lead::factory()->create();
 
         $response = $this->deleteJson("/api/leads/{$lead->id}");

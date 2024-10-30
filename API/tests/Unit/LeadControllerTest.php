@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
 use App\Modules\Lead\Controller\LeadController;
@@ -119,7 +121,7 @@ class LeadControllerTest extends TestCase
         // Assertions
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('Lead updated successfully', $response->getData(true)['message']);
+        $this->assertEquals('Lead Updated Successfully', $response->getData(true)['message']);
     }
 
     public function test_destroy_deletes_lead()

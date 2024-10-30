@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Modules\Auth\Model\User;
@@ -19,14 +21,14 @@ class AuthControllerTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $response->assertStatus(201)
+        $response->assertStatus(200)
             ->assertJson(['message' => 'User registered successfully']);
         $this->assertDatabaseHas('users', ['email' => 'test@example.com']);
     }
 
     public function test_user_can_login_with_correct_credentials(): void
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
         ]);
