@@ -25,7 +25,7 @@ class ModularMigration extends Command
         $migrations = [
             'app/Modules/Auth/Database/Migrations/2024_10_27_000001_create_users_table.php',
             'app/Modules/Auth/Database/Migrations/2024_10_27_000002_create_personal_access_tokens_table.php',
-            'app/Modules/Lead/Database/Migrations/2024_10_27_000005_add_indexes_to_leads_table.php',
+            'app/Modules/Lead/Database/Migrations/2024_10_28_000005_add_indexes_to_leads_table.php',
         ];
 
         foreach ($migrations as $migration) {
