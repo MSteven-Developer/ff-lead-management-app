@@ -2,11 +2,14 @@
 # Lead Management App
 
 ## Description
-This repository contains the source code for a lead management application, developed as part of a take-home assessment for the Senior Software Engineer position at Freedom Forever LLC. The application manages a large dataset using Laravel for the backend, MySQL for data storage, and a React frontend. Key features include the ability to view, insert, update, and search records in the dataset.
+This repository contains the source code for a lead management application, developed as part of a take-home assessment for the Senior Software Engineer position at Freedom Forever LLC. The application manages a large dataset using Laravel for the backend, MySQL for data storage, and a React frontend. Key features include viewing, inserting, updating, and searching records in the dataset.
+
+The application also provides features like Authentication, data caching, filtering with pagination and sorting, and Unit and feature tests to validate application functionality.
 
 ## Infrastructure Pre-requisites
 To run this application, please ensure you have the following installed:
 - **PHP** 8.1
+- **Composer** v2
 - **Node.js** v20.x.x or higher
 - **MySQL**
 
@@ -29,27 +32,35 @@ cd <repository-folder>
    - A `lead_status` table
 
 3. **Configure Database Credentials**  
-   Update your database configuration in the `.env` file:
+   Create a .env file
+    ```bash
+   touch .env
+   ```
+
+   Copy and paste content from `.env.example` and Update your database configuration in the `.env` file:
    ```plaintext
+   DB_CONNECTION=mysql
+   DB_HOST=your_database_host
+   DB_PORT=your_databse_port
    DB_DATABASE=your_database_name
    DB_USERNAME=your_database_username
    DB_PASSWORD=your_database_password
    ```
 
-4. **Install Backend Dependencies**  
+5. **Install Backend Dependencies**  
    Navigate to the API directory, install dependencies, and set up the database:
    ```bash
    cd API
    composer install
    ```
 
-5. **Run Migrations**  
+6. **Run Migrations**  
    Use the custom migration command:
    ```bash
    php artisan migrate:modular
    ```
 
-6. **Start the API Server**  
+7. **Start the API Server**  
    Start the server to serve the API:
    ```bash
    php artisan serve
@@ -90,8 +101,13 @@ The application includes several unit and feature tests using PHPUnit to validat
    <env name="DB_CONNECTION" value="sqlite"/>
    <env name="DB_DATABASE" value="database/testing.sqlite"/>
    ```
-
-3. **Run the Tests**  
+3. **Create SQLite file**  
+   Create a SQLite file at the path as we defined in the above configuration:
+   ```bash
+   touch database/testing.sqlite
+   ```
+   
+4. **Run the Tests**  
    Execute the following command to run all tests:
    ```bash
    php artisan test
